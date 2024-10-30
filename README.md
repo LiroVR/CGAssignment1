@@ -2,6 +2,7 @@
 **All assets used in the project (models and textures) were made by me using Blender and Substance Painter**
 ## Implemented Effects
 ### Outlines
+Outlines highlight the edge of a mesh, and give it a sort of "focus". I felt this fit nicely to highlight the player, as well as the enemies.
 ![image](https://github.com/user-attachments/assets/40578e95-9d47-4f5e-8d6e-e0d2a98df9d5)
 ```hlsl
 // Dedicated Outline Pass
@@ -43,6 +44,7 @@
 Outline works by effectively taking the normals of the mesh, and extruding them slightly outword. It then uses front face culling to give it the appearance of being an outline. The lighting is disabled, so the outlines aren't affected by shadows/lights, so they stay consistent
 
 ### Rim Lighting
+Used specifically for the enemies, giving them an otherworldy, "ghosty" feel. It also makes them very visible, as a red rim light with emission makes them stand out from the environment.
 ![image](https://github.com/user-attachments/assets/7177cb81-6587-4217-9a29-0f48a3d5ede9)
 ```hlsl
 half rim = 1.0 - saturate(dot(normalize(IN.viewDir), o.Normal)); // Calculates the rim lighting, using the angle of a given normal and the view direction
@@ -51,6 +53,7 @@ o.Emission += _rimColour.rgb * pow(rim, 8 - _rimPower) * _rimEmission; // Adds t
 Rim lighting takes the angle between a given normal of the mesh, and the viewing angle. The larger the angle (the more a normal on the mesh faces away) the brighter the rim lighting is. The rim lighting is then added to the emission, so that it glows as well
 
 ### PBR Options
+These contribute to the realism that I aimed for, as I felt it was more eery
 ![image](https://github.com/user-attachments/assets/5fd81d53-09c0-4b49-af2f-7ad8a706a950)
 
 **Normal Mapping**
