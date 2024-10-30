@@ -1,5 +1,10 @@
 # CGAssignment1
 **All assets used in the project (models and textures) were made by me using Blender and Substance Painter**
+
+**Third-Party Scripts Used:**
+- Post Processing (Depth of field, bloom, colour grading, lens distortion, ambient occlusion)
+- Dynamic Bones (Used to make tail and ears on model sway with movement)
+
 ## Implemented Effects
 ### Outlines
 Outlines highlight the edge of a mesh, and give it a sort of "focus". I felt this fit nicely to highlight the player, as well as the enemies.
