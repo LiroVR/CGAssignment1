@@ -7,7 +7,8 @@
 
 ## NEW Implemented Effects
 ### Vertex Distortion
-Randomly offsets each vertex outward by different amounts. Changes with time, making it "almost vibrate".
+Randomly offsets each vertex outward by different amounts. Changes with time, making it almost "vibrate".
+
 I felt that this effect greatly enhanced the ethereal, nightmare-esque aesthetic when added to the enemy specters.
 
 ![VertexDistortion](https://github.com/user-attachments/assets/cea1287a-0e67-49d0-8451-23689d20dbe1)
@@ -40,6 +41,7 @@ The effect works by taking each vertex, and generating a random offset, which is
 
 ### Texture Blurring and Rotation
 Blurs the textures, and optionally rotates them around in a swirl
+
 I felt this effect was perfect in making the world feel unnatural and dream-like, as it's supposed to take place in a nightmare. It adds a lot to the environment, and immediately tells the player that the world isn't natural.
 
 ![BlurExample](https://github.com/user-attachments/assets/d5a3bb71-acbc-4c60-9745-9a4bbfbdfa03) ![BlurDiagramLR](https://github.com/user-attachments/assets/75718ca9-881e-4b68-9097-776baa4c7ed6)
@@ -54,6 +56,7 @@ float noise(float2 pos)
 float3 distortedPos = float3((IN.uv_mainTexture.x + noise(IN.uv_mainTexture) * _blurStrength * cos(_Time.y * _blurSpeed)), (IN.uv_mainTexture.y + noise(IN.uv_mainTexture) * _blurStrength * sin(_Time.y * _blurSpeed)), 0.0);
 ```
 This effect works by distorting the UV position for the pixels by a random amount, causing them to become more blurry as the strength is increased.
+
 The swirl effect is done by multiplying the x and y offsets using cos and sin values calculated using time, so they constantly oscillate
 
 ## Old Effects (Assignment 1)
