@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class GameHandler : MonoBehaviour
     [SerializeField] private Font customFont;
     public int score = 0;
     public bool isGameOver = false, isWin = false;
+    [SerializeField] private List<GameObject> orbs = new List<GameObject>();
+    private float orbDistance = Mathf.Infinity, minDistance = Mathf.Infinity;
+    [SerializeField] private GameObject player;
 
     public void CheckScore()
     {
@@ -16,6 +20,33 @@ public class GameHandler : MonoBehaviour
         {
             isWin = true;
         }
+    }
+
+    void Update()
+    {
+        NearestOrb();
+    }
+
+    private void NearestOrb()
+    {
+        minDistance = Mathf.Infinity;
+        foreach(GameObject orb in orbs)
+        {
+            if(orb != null)
+            {
+                float distance = Vector3.Distance(orb.transform.position, player.transform.position);
+                if(distance < minDistance)
+                {
+                    minDistance = distance;
+                }
+            }
+            else
+            {
+                orbs.Remove(orb);
+                break;
+            }
+        }
+        orbDistance = minDistance;
     }
 
     private void OnGUI()
@@ -44,6 +75,7 @@ public class GameHandler : MonoBehaviour
             scoreStyle.fontSize = 100; 
             scoreStyle.normal.textColor = Color.white;
             GUI.Label(new Rect(10, 10, 100, 50), "Orbs: " + score + "/5", scoreStyle);
+            GUI.Label(new Rect(10, 100, 100, 50), "Nearest Orb: " + Math.Ceiling(orbDistance) + "m", scoreStyle);
         }
         
     }

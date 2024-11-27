@@ -51,5 +51,15 @@ public class PlayerScript : MonoBehaviour
         SetLook(pControls.Walking.Look.ReadValue<Vector2>()); //Reading the 'Look' from the input system
         animator.SetFloat("VelocityX", speed*moveVector.x); //Controls animator values to run the locomotion animations
         animator.SetFloat("VelocityZ", speed*moveVector.y);
+        /*
+        if (pControls.Walking.Scan.triggered)
+        {
+            animator.SetBool("Scan", true);
+        }
+        else
+        {
+            animator.SetBool("Scan", false);
+        }
+        */
     }
 }

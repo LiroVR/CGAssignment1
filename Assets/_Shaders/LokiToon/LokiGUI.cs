@@ -30,6 +30,11 @@ public class LokiGUI : ShaderGUI
         MaterialProperty shadingMode = FindProperty("_ShadingMode", properties);
         MaterialProperty outlineThickness = FindProperty("_outlineThickness", properties);
         MaterialProperty outlineColour = FindProperty("_outlineColour", properties);
+        MaterialProperty blurStrength = FindProperty("_blurStrength", properties);
+        MaterialProperty blurSpeed = FindProperty("_blurSpeed", properties);
+        MaterialProperty distortionStrength = FindProperty("_distortionStrength", properties);
+        MaterialProperty distortionSpeed = FindProperty("_distortionSpeed", properties);
+        MaterialProperty _textureToggle = FindProperty("_textureToggle", properties);
 
 
         selectedOption = EditorGUILayout.Popup("Lighting Mode", selectedOption, options); //Can switch between realistic and Cel Shading (again, not fully functional)
@@ -91,6 +96,18 @@ public class LokiGUI : ShaderGUI
         EditorGUILayout.BeginHorizontal();
         materialEditor.RangeProperty(rimEmission, "Rim Emission");
         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        materialEditor.RangeProperty(blurStrength, "Blur Strength");
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        materialEditor.RangeProperty(blurSpeed, "Blur Speed");
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        materialEditor.RangeProperty(distortionStrength, "Distortion Strength");
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        materialEditor.RangeProperty(distortionSpeed, "Distortion Speed");
+        EditorGUILayout.EndHorizontal();
         materialEditor.TexturePropertySingleLine(new GUIContent("Metallic Map"), metallicMap);
         EditorGUILayout.BeginHorizontal();
         materialEditor.RangeProperty(metallic, "Metallic");
@@ -100,10 +117,13 @@ public class LokiGUI : ShaderGUI
         materialEditor.RangeProperty(smoothness, "Smoothness");
         EditorGUILayout.EndHorizontal();
         bool invert = EditorGUILayout.Toggle("Invert Smoothness", invertSmoothness.floatValue == 1);
+        bool texToggle = EditorGUILayout.Toggle("Texture Toggle", _textureToggle.floatValue == 1);
+
 
         if (EditorGUI.EndChangeCheck())
         {
             invertSmoothness.floatValue = invert ? 1 : 0; //Controls the invert smoothness checkbox
+            _textureToggle.floatValue = texToggle ? 1 : 0; //Controls the texture toggle checkbox
         }
         EditorGUI.BeginChangeCheck();
     }

@@ -59,8 +59,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _emissionMap:
+    - _distortionTexture:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _emissionMap:
+        m_Texture: {fileID: 2800000, guid: 04adfac2018725f43bf17158a3b6991a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _mainNormal:
@@ -68,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _mainTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 04adfac2018725f43bf17158a3b6991a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _metallicMap:
@@ -104,19 +108,24 @@ Material:
     - _Transparency: 0
     - _UVSec: 0
     - _ZWrite: 1
-    - _emissionStrength: 0
+    - _blurSpeed: 0
+    - _blurStrength: 0.012
+    - _distortionSpeed: 10
+    - _distortionStrength: 0
+    - _emissionStrength: 0.4
     - _lightingMode: 0
     - _metallic: 0
-    - _outlineThickness: 0.25
+    - _outlineThickness: 0
     - _rimEmission: 5
-    - _rimPower: 3
+    - _rimPower: 5.11
     - _smoothness: 0
+    - _textureToggle: 1
     - _transparency: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _mainColor: {r: 1, g: 0.46765494, b: 0.46765494, a: 1}
-    - _mainEmission: {r: 1, g: 1, b: 1, a: 1}
+    - _mainEmission: {r: 1, g: 0, b: 0, a: 1}
     - _outlineColour: {r: 1, g: 0, b: 0, a: 1}
     - _rimColour: {r: 1, g: 0, b: 0, a: 1}
     - _scrollSpeed: {r: 0, g: 0, b: 0, a: 0}
